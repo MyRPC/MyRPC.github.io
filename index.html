@@ -192,27 +192,45 @@
 
           <ul class="lb-album">
             <li>
-              <a id="dlWin32" target="_blank">
+              <a id="dlExe" target="_blank">
 								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
-								<span><i class="fa fa-windows"></i> x32</span>
+								<span><i class="fa fa-windows"></i> .EXE</span>
 							</a>
             </li>
 	    <li>
-              <a id="dlWin64" target="_blank">
+              <a id="dlMsi" target="_blank">
 								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
-								<span><i class="fa fa-windows"></i> x64</span>
+								<span><i class="fa fa-windows"></i> .MSI</span>
 							</a>
             </li>
 	    <li>
-              <a id="dlDeb32" target="_blank">
+              <a id="dlDmg" target="_blank">
 								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
-								<span>Deb x32</span>
+								<span><i class="fa fa-apple"></i> .DMG</span>
 							</a>
             </li>
 	    <li>
-              <a id="dlDeb64" target="_blank">
+              <a id="dlDeb" target="_blank">
 								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
-								<span>Deb x64</span>
+								<span><i class="fa fa-linux"></i> .DEB</span>
+							</a>
+            </li>
+	    <li>
+              <a id="dlRpm" target="_blank">
+								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
+								<span><i class="fa fa-linux"></i> .RPM</span>
+							</a>
+            </li>
+	    <li>
+              <a id="dlAppImage" target="_blank">
+								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
+		      <span><i class="fa fa-linux"></i> .APPIMAGE</span>
+							</a>
+            </li>
+	    <li>
+              <a id="dlSnap" target="_blank">
+								<img src="https://i.railrunner16.me/ZIfYIBc.png" width="150" height="150" alt="">
+		      <span><i class="fa fa-linux"></i> .SNAP</span>
 							</a>
             </li>
           </ul>
@@ -346,15 +364,21 @@
     
     function GetLatestRelease() {
       $.getJSON("https://api.github.com/repos/RailRunner166/MyRPC/releases/latest").done(function (release) {
-	var debArch32 = release.assets[0].browser_download_url;
-	var debArch64 = release.assets[1].browser_download_url;
-        var winArch32 = release.assets[2].browser_download_url;
-        var winArch64 = release.assets[3].browser_download_url;
+	var appImage = release.assets[4].browser_download_url;
+	var dmg = release.assets[5].browser_download_url;
+        var msi = release.assets[7].browser_download_url;
+        var rpm = release.assets[8].browser_download_url;
+        var exe = release.assets[9].browser_download_url;
+        var deb = release.assets[11].browser_download_url;
+        var snap = release.assets[12].browser_download_url;
 	
-        $('#dlWin64').attr('href', winArch64);
-        $('#dlWin32').attr('href', winArch32);
-	$('#dlDeb64').attr('href', debArch64);
-        $('#dlDeb32').attr('href', debArch32);
+        $('#dlAppImage').attr('href', appImage);
+        $('#dlDmg').attr('href', dmg);
+	$('#dlMsi').attr('href', msi);
+        $('#dlRpm').attr('href', rpm);
+	$('#dlExe').attr('href', exe);
+        $('#dlDeb').attr('href', deb);
+        $('#dlSnap').attr('href', snap);
       });
     }
   </script>
